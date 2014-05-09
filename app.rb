@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'pony'
+require 'json'
 
 class App < Sinatra::Base
 
@@ -37,7 +38,16 @@ Message:
         :enable_starttls_auto => true,
       }
     )
-    'sent'
+
+    content_type :json
+    response.headers['Access-Control-Allow-Origin'] = 'http://redningja.com'
+
+    {
+      "mailSent" => true,
+      "into"     => "#wpcf7-f4-p57-o1",
+      "captcha"  => nil,
+      "message"  => "Your message was sent successfully. Thanks.",
+    }.to_json
   end
 
   get '/try' do
