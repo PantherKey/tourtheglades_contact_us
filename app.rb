@@ -6,23 +6,25 @@ class App < Sinatra::Base
   post '/contact-us' do
     body =
       <<-BODY
-  Dates Requested: #{params.fetch('DatesRequested')}
+From: #{params['your-name']} (#{params['your-email']})
 
-  Message:
-  #{params.fetch('your-message')}
+Dates Requested: #{params.fetch('DatesRequested')}
+
+Message:
+#{params.fetch('your-message')}
       BODY
 
     to =
       if params.key?('test')
-        'jared@redningja.com'
+        'test_tourtheglades@redningja.com'
       else
-        'test@redningja.com'
+        'asdf@redningja.com'
         #'toddahlke@aol.com'
       end
 
     Pony.mail(
       :to          => to,
-      :from        => params.fetch('your-email'),
+      :from        => 'heroku@tourtheglades.com',
       :subject     => 'Someone filled out the contact-us form',
       :body        => body,
       :via         => :smtp,
@@ -36,6 +38,7 @@ class App < Sinatra::Base
         :enable_starttls_auto => true,
       }
     )
+    'sent'
   end
 
   get '/try' do
