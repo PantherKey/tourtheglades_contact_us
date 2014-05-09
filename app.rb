@@ -8,17 +8,18 @@ class App < Sinatra::Base
       <<-BODY
 From: #{params['your-name']} (#{params['your-email']})
 
-Dates Requested: #{params.fetch('DatesRequested')}
+Dates Requested: #{params['DatesRequested']}
 
 Message:
-#{params.fetch('your-message')}
+#{params['your-message']}
       BODY
 
     to =
       if params.key?('test')
         'test_tourtheglades@redningja.com'
       else
-        'asdf@redningja.com'
+        'test_tourtheglades@redningja.com'
+        #'asdf@redningja.com'
         #'toddahlke@aol.com'
       end
 
