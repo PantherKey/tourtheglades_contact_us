@@ -18,9 +18,7 @@ Message:
       if params.key?('test')
         'test_tourtheglades@redningja.com'
       else
-        'test_tourtheglades@redningja.com'
-        #'asdf@redningja.com'
-        #'toddahlke@aol.com'
+        'toddahlke@aol.com'
       end
 
     Pony.mail(
