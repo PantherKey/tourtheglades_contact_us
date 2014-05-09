@@ -12,9 +12,16 @@ class App < Sinatra::Base
   #{params.fetch('your-message')}
       BODY
 
+    to =
+      if params.key?('test')
+        'jared@redningja.com'
+      else
+        'test@redningja.com'
+        #'toddahlke@aol.com'
+      end
+
     Pony.mail(
-      #:to          => 'toddahlke@aol.com',
-      :to          => 'jared@redningja.com',
+      :to          => to,
       :from        => params.fetch('your-email'),
       :subject     => 'Someone filled out the contact-us form',
       :body        => body,
@@ -41,10 +48,11 @@ class App < Sinatra::Base
     url = base_url + '/contact-us'
     <<-HTML
     <form action="#{url}" method="post">
-      <input type="text" name="your-name" placeholder="Your Name"/>
-      <input type="text" name="your-email" placeholder="Email"/>
-      <input type="text" name="DatesRequested" placeholder="Dates Requested"/>
-      <input type="text" name="your-message" placeholder="Message"/>
+      <input type="text"   name="your-name" placeholder="Your Name"/>
+      <input type="text"   name="your-email" placeholder="Email"/>
+      <input type="text"   name="DatesRequested" placeholder="Dates Requested"/>
+      <input type="text"   name="your-message" placeholder="Message"/>
+      <input type="hidden" name="test" value="1" />
       <input type="submit" />
     </form>
     HTML
