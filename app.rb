@@ -40,7 +40,7 @@ Message:
     )
 
     content_type :json
-    response.headers['Access-Control-Allow-Origin'] = 'http://redningja.com'
+    response.headers['Access-Control-Allow-Origin'] = 'http://tourtheglades.com'
 
     {
       "mailSent" => true,
