@@ -15,12 +15,8 @@ Message:
 #{params['your-message']}
       BODY
 
-    to =
-      if params.key?('test')
-        'test_tourtheglades@redningja.com'
-      else
-        'toddahlke@aol.com'
-      end
+    to = ['test_tourtheglades@redningja.com']
+    to << 'toddahlke@aol.com' unless params.key?('test')
 
     Pony.mail(
       :to          => to,
