@@ -16,7 +16,7 @@ Message:
       BODY
 
     to = ['test_tourtheglades@redningja.com']
-    to << 'toddahlke@aol.com' unless params.key?('test')
+    to << 'tourtheeverglades@gmail.com' unless params.key?('test')
 
     Pony.mail(
       :to          => to,
